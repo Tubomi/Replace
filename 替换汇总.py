@@ -16,3 +16,7 @@ ping=ping[ping['运营商'].isin(['Tim','Wind'])]
 ping=ping.groupby(['Offer','运营商']).sum()
 ping.to_excel('E:\\2018\\订阅\\二月订阅\\123.xls',\
                   sheet_name='sheet0')
+
+#csv文件
+sm=open('E:\\2018\\订阅\\二月订阅\\WeMobi20181130160303.csv')
+read=pd.read_csv(sm)
