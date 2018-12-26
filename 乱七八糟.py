@@ -1,3 +1,4 @@
+#网易iframe内嵌框架爬取 https://www.jianshu.com/p/4e96f8466261
 #99乘法表
 for i in range(1,10):
     for j in range(1,10):
