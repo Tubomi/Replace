@@ -27,7 +27,7 @@ for i in tracks:
   
  
 #网易翻页问题还没弄，目前只读取了第一页的各节目链接
-#读取页码，其实几页直接弄就好了
+#读取页码，其实几页直接弄就好了，正则表达式哪里需要注意一下
 from bs4 import BeautifulSoup as bs
 import requests
 # urllib.request
