@@ -105,4 +105,5 @@ for i in range(1,nrows):
  #那些零零总总遇到的坑
  pycrypto不支持3.6版本，新版pip install pycryptodome
  Crypto安装后显示不存在，去Python安装库lib-setpackages找到文件 把小写改成大写
+https://www.cnblogs.com/fawaikuangtu123/p/9761943.html
 
