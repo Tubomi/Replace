@@ -101,3 +101,8 @@ row_list = []
 for i in range(1,nrows):
  row_data = sh.row_values(i)
  row_list.append(row_data)
+    
+ #那些零零总总遇到的坑
+ pycrypto不支持3.6版本，新版pip install pycryptodome
+ Crypto安装后显示不存在，去Python安装库lib-setpackages找到文件 把小写改成大写
+
