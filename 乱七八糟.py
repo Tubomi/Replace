@@ -1,5 +1,6 @@
 #网易iframe内嵌框架爬取 https://www.jianshu.com/p/4e96f8466261
 #（python）随机抽样 https://www.jianshu.com/p/d4807eff9111
+#UCI 数据库 http://archive.ics.uci.edu/ml/index.php
 
 from bs4 import BeautifulSoup as bs
 import requests
