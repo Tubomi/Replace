@@ -4,7 +4,7 @@
 #sklearn的快速使用
 https://www.cnblogs.com/lianyingteng/p/7811126.html
 https://blog.csdn.net/u014248127/article/details/78885180
-
+正则 re.findall 的坑：https://www.cnblogs.com/one-lightyear/p/6814833.html
 from bs4 import BeautifulSoup as bs
 import requests
 # urllib.request
