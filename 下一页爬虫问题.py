@@ -54,12 +54,12 @@ def get_tracklinks(soup):#获取每个页码内全部书的链接”
         time_sleep()
 def essaylink(url):
     replylink=_request(i)
-    get_contentlinks(essaylink)
+    get_contentlinks(replylink)
     next_page(url)
     if respone ==[]:
         break
     else:
-        get_page(total)
+        essaylink(total)
                       
 def get_contentlinks(soup):
     cont1=soup.find_all('h5')
@@ -71,10 +71,7 @@ def get_contentlinks(soup):
         reply=_request(i)
         time_sleep()
         get_content(reply)
-    if respone ==[]:
-        break
-    else:
-        get_(total)
+
 def get_content(soup):
     cont2=(soup.find('pre',id="link-report")).string
     title=(soup.find('h1')).string
