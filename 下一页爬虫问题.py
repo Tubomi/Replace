@@ -7,6 +7,7 @@ import json
 import pandas as pd
 import time
 import random
+s=[]
 def _request(url):
     headers = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'}
     proxies = { "http": "http://114.239.150.199", } 
@@ -29,33 +30,37 @@ def next_page(url):
     cont=soup.find("span",class_="next")
     recom=re.compile(r'<a href="(.*?)"w*?', re.S)
     respone=re.findall(recom,str(cont))
-    s=[]
-    if respone ==[]:
-                
+    total=url+str(s)
+    
+                     
 def get_page(url):
     pagelinks=_request(url)
     pagelink=get_tracklinks(pagelink)
+    next_page（url）
+    if respone ==[]:
+        break
+    else:
+        get_page(total)
 
-    respone
-    for i in range(page):
-        url="https://book.douban.com/people/80348933/annotation/?start="
-        s=i*5
-        url=url+str(s)
-        pagelinks=_request(url)
-        time_sleep()
-        get_tracklinks(pagelinks)
 def get_tracklinks(soup):#获取每个页码内全部书的链接”
     cont=soup.find_all('h3')
     recom=re.compile(r'<a href="(.*?)" title.*?', re.S)
     respone=re.findall(recom,str(cont))
     for i in respone:    
         print("正在读取"+str(i))
-        essaylink=_request(i)
-        get_contentlinks(essaylink)
+        essaylink(i)
+
         #get_pagetracklink(self._request(i))
         time_sleep()
-                
-    
+def essaylink(url):
+    replylink=_request(i)
+    get_contentlinks(essaylink)
+    next_page(url)
+    if respone ==[]:
+        break
+    else:
+        get_page(total)
+                      
 def get_contentlinks(soup):
     cont1=soup.find_all('h5')
     recom=re.compile(r'<a href="(.*?)">', re.S)
@@ -66,6 +71,10 @@ def get_contentlinks(soup):
         reply=_request(i)
         time_sleep()
         get_content(reply)
+    if respone ==[]:
+        break
+    else:
+        get_(total)
 def get_content(soup):
     cont2=(soup.find('pre',id="link-report")).string
     title=(soup.find('h1')).string
