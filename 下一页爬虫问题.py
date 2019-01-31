@@ -36,7 +36,7 @@ def next_page(url):
 def get_page(url):
     pagelinks=_request(url)
     pagelink=get_tracklinks(pagelink)
-    x=next_page（url）
+    x=next_page(url)
     if x ==[]:
         break
     else:
