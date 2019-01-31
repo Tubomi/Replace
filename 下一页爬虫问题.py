@@ -36,8 +36,8 @@ def next_page(url):
 def get_page(url):
     pagelinks=_request(url)
     pagelink=get_tracklinks(pagelink)
-    next_page（url）
-    if respone ==[]:
+    x=next_page（url）
+    if x ==[]:
         break
     else:
         get_page(url+str(s))
@@ -55,8 +55,8 @@ def get_tracklinks(soup):#获取每个页码内全部书的链接”
 def essaylink(url):
     replylink=_request(i)
     get_contentlinks(replylink)
-    next_page(url)
-    if respone ==[]:
+    x=next_page(url)
+    if x ==[]:
         break
     else:
         essaylink(url+str(s))
