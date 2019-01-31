@@ -27,6 +27,7 @@ def get_link(urls):
         #get_pagetracklink(self._request(i))
         time_sleep()
 def next_page(url):
+    soup=_request(url)
     cont=soup.find("span",class_="next")
     recom=re.compile(r'<a href="(.*?)"w*?', re.S)
     respone=re.findall(recom,str(cont))
@@ -35,7 +36,7 @@ def next_page(url):
                      
 def get_page(url):
     pagelinks=_request(url)
-    pagelink=get_tracklinks(pagelink)
+    pagelink=get_tracklinks(pagelinks)
     x=next_page(url)
     if x ==[]:
         print("读取全部页码完毕")
@@ -49,11 +50,10 @@ def get_tracklinks(soup):#获取每个页码内全部书的链接”
     for i in respone:    
         print("正在读取"+str(i))
         essaylink(i)
-
         #get_pagetracklink(self._request(i))
         time_sleep()
 def essaylink(url):
-    replylink=_request(i)
+    replylink=_request(url)
     get_contentlinks(replylink)
     x=next_page(url)
     if x ==[]:
@@ -82,4 +82,4 @@ def get_content(soup):
 
     comments.to_excel('E:\\新建文件夹\\test.xls',sheet_name='sheet0')
     time_sleep()
-print("读取该书完毕")
+    print("读取该书完毕")
