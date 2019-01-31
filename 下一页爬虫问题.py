@@ -30,7 +30,7 @@ def next_page(url):
     cont=soup.find("span",class_="next")
     recom=re.compile(r'<a href="(.*?)"w*?', re.S)
     respone=re.findall(recom,str(cont))
-    total=url+str(s)
+    #total=url+str(s)
     return respone
                      
 def get_page(url):
@@ -38,7 +38,7 @@ def get_page(url):
     pagelink=get_tracklinks(pagelink)
     x=next_page(url)
     if x ==[]:
-        break
+        print("读取全部页码完毕")
     else:
         get_page(url+str(s))
 
@@ -57,9 +57,9 @@ def essaylink(url):
     get_contentlinks(replylink)
     x=next_page(url)
     if x ==[]:
-        break
+        print("读取该篇文章内所有页码完毕")
     else:
-        essaylink(url+str(s))
+        essaylink(total)
                       
 def get_contentlinks(soup):
     cont1=soup.find_all('h5')
@@ -82,5 +82,4 @@ def get_content(soup):
 
     comments.to_excel('E:\\新建文件夹\\test.xls',sheet_name='sheet0')
     time_sleep()
-    print("读取完毕")
-    
+print("读取该书完毕")
