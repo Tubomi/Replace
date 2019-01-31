@@ -31,7 +31,7 @@ def next_page(url):
     recom=re.compile(r'<a href="(.*?)"w*?', re.S)
     respone=re.findall(recom,str(cont))
     total=url+str(s)
-    
+    return respone
                      
 def get_page(url):
     pagelinks=_request(url)
@@ -40,7 +40,7 @@ def get_page(url):
     if respone ==[]:
         break
     else:
-        get_page(total)
+        get_page(url+str(s))
 
 def get_tracklinks(soup):#获取每个页码内全部书的链接”
     cont=soup.find_all('h3')
@@ -59,7 +59,7 @@ def essaylink(url):
     if respone ==[]:
         break
     else:
-        essaylink(total)
+        essaylink(url+str(s))
                       
 def get_contentlinks(soup):
     cont1=soup.find_all('h5')
