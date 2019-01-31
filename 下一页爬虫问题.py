@@ -1,4 +1,11 @@
 #重点要解决的：图片和文字在一起的时候爬取为空，所以要重新改代码；
+    headers = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'}
+    url='https://book.douban.com/annotation/69902060/'
+    proxies = { "http": "http://114.239.150.199", } 
+    ht=requests.get(url,headers=headers,proxies=proxies)
+    soup=bs(ht.content,'lxml',from_encoding='utf-8')
+    cont=soup.find("pre",id="link-report")
+    cont
 #拿到图片链接
 headers = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'}
     url='https://book.douban.com/annotation/66983789/'
