@@ -29,8 +29,6 @@ import pandas as pd
 import time
 import random
 s=[]
-df=pd.DataFrame({},columns=['time', 'title',"content"])
-df.to_excel('E:\\新建文件夹\\test.xls',sheet_name='sheet0')
 def _request(url):
     headers = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'}
     proxies = { "http": "http://114.239.150.199", } 
@@ -52,7 +50,7 @@ def get_link(urls):
 def next_page(url):
     soup=_request(url)
     cont=soup.find("span",class_="next")
-    recom=re.compile(r'<a href="(.*?)"w*?', re.S)
+    recom=re.compile(r'<a href="(.*?)">.*?', re.S)
     respone=re.findall(recom,str(cont))
     #total=url+str(s)
     return respone
@@ -64,7 +62,7 @@ def get_page(url):
     if x ==[]:
         print("读取全部页码完毕")
     else:
-        get_page(url+str(x))
+        get_page(url+str(x[0]))
 
 def get_tracklinks(soup):#获取每个页码内全部书的链接”
     cont=soup.find_all('h3')
@@ -83,7 +81,7 @@ def essaylink(url):
     if x ==[]:
         print("读取该篇文章内所有页码完毕")
     else:
-        essaylink(url+str(x))
+        essaylink(url+str(x[0]))
                       
 def get_contentlinks(soup):
     cont1=soup.find_all('h5')
@@ -106,4 +104,4 @@ def get_content(soup):
 
     comments.to_excel('E:\\新建文件夹\\test.xls',sheet_name='sheet0')
     time_sleep()
-    print("读取该书完毕")
+    print("该评论读取完毕")
