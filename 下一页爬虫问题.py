@@ -18,6 +18,7 @@ headers = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/5
     respone
     
 ******************************************************************************************************
+
 from bs4 import BeautifulSoup as bs
 import requests
 # urllib.request
@@ -28,6 +29,8 @@ import pandas as pd
 import time
 import random
 s=[]
+df=pd.DataFrame({},columns=['time', 'title',"content"])
+df.to_excel('E:\\新建文件夹\\test.xls',sheet_name='sheet0')
 def _request(url):
     headers = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'}
     proxies = { "http": "http://114.239.150.199", } 
@@ -35,7 +38,7 @@ def _request(url):
     soup=bs(res.content,'lxml',from_encoding='utf-8')
     return soup
 def time_sleep():
-    sleep=random.random()*3
+    sleep=random.random()*2
     time.sleep(sleep)
     
 def get_link(urls):
@@ -61,7 +64,7 @@ def get_page(url):
     if x ==[]:
         print("读取全部页码完毕")
     else:
-        get_page(url+str(s))
+        get_page(url+str(x))
 
 def get_tracklinks(soup):#获取每个页码内全部书的链接”
     cont=soup.find_all('h3')
@@ -70,6 +73,7 @@ def get_tracklinks(soup):#获取每个页码内全部书的链接”
     for i in respone:    
         print("正在读取"+str(i))
         essaylink(i)
+        print("读取该页完毕")
         #get_pagetracklink(self._request(i))
         time_sleep()
 def essaylink(url):
@@ -79,7 +83,7 @@ def essaylink(url):
     if x ==[]:
         print("读取该篇文章内所有页码完毕")
     else:
-        essaylink(total)
+        essaylink(url+str(x))
                       
 def get_contentlinks(soup):
     cont1=soup.find_all('h5')
