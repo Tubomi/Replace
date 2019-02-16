@@ -14,7 +14,7 @@ z['收益差值']=n
 z.to_excel('E:\\2018\\订阅\\二月订阅\\456.xls',sheet_name='sheet0')
 __________________________________________________________________________________________
 pd.set_option('display.max_rows',None)#通过修改max_rows or max_columns确定展示的行，列最大值，NONE表示显示所有内容修改数值确定最大展示行/列数
-
+pd.set_option('display.width', 200) 显示单列全部内容，200为展示最大字符数
 ——————————————————————————————————
 import numpy as np
 import pandas as pd
