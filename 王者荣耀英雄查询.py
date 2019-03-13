@@ -3,6 +3,7 @@ import requests
 from bs4 import BeautifulSoup as bs
 from selenium import webdriver
 import pandas as pd
+#selenium 设置代理 chromeOptions.add_argument("--proxy-server=http://114.239.150.199") # 一定要注意，=两边不能有空格，
 headers = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.109 Safari/537.36'}
 proxies = { "http": "http://114.239.150.199", } 
 url="https://pvp.qq.com/web201605/js/herolist.json"
